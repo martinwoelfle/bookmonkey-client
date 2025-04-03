@@ -1,5 +1,5 @@
-<h2 [style]="customStyle">Mobby Dick</h2>
-<h4>Hermann Melville</h4>
+<h2 [style]="customStyle">{{ content().title }}</h2>
+<h4>{{ content().author }}</h4>
 <a href="url">details</a>
 
-<p><i>abstract abstract abstract</i></p>
+<p><i>{{ content().abstract }}</i></p>

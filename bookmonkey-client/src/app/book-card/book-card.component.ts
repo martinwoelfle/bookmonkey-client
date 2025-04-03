@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-book-card',
@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class BookCardComponent {
   customStyle = { 'color': 'DodgerBlue', 'font-size': '40px' };
+  content = input<any>();
 }
