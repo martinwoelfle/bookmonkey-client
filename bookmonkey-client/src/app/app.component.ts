@@ -10,7 +10,8 @@ import {Book} from './book';
 })
 export class AppComponent {
   title = 'bookmonkey-client2';
-  book: Book = {title: 'How to win friends', author: 'Dale Carnegie', abstract: 'In this book ...'};
+  books: Book[] = [{isbn: 123, title: 'How to win friends', author: 'Dale Carnegie', abstract: 'In this book ...'},
+                    {isbn: 456, title: 'Funny Book', author: 'Funny Author', abstract: 'This book is really funny ...'}];
 
   goToBookDetails(book: Book) {
     console.log('Book-Details');

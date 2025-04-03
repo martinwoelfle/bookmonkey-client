@@ -6,4 +6,6 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<app-book-card [content]="book" (detailClick)="goToBookDetails($event)"></app-book-card>
+@for (book of books; track book.isbn) {
+  <app-book-card [content]="book" (detailClick)="goToBookDetails($event)"></app-book-card>
+}
