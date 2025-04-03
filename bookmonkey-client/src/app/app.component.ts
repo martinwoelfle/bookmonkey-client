@@ -11,4 +11,9 @@ import {Book} from './book';
 export class AppComponent {
   title = 'bookmonkey-client2';
   book: Book = {title: 'How to win friends', author: 'Dale Carnegie', abstract: 'In this book ...'};
+
+  goToBookDetails(book: Book) {
+    console.log('Book-Details');
+    console.table(book);
+  }
 }

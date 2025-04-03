@@ -1,5 +1,5 @@
 <h2 [style]="customStyle">{{ content().title }}</h2>
 <h4>{{ content().author }}</h4>
-<a href="url">details</a>
+<a href="" (click)="handleDetailClick($event)">details</a>
 
 <p><i>{{ content().abstract }}</i></p>
