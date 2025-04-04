@@ -14,3 +14,7 @@ export class BookFilterPipe implements PipeTransform {
     return books.filter(item => item.title.toUpperCase().includes(searchTerm.toUpperCase()));
   }
 }
+
+// function filterBook(books: Book[], searchTerm: string): boolean {
+//   Object.entries(books).forEach(([key, value]) => {value})
+// }
