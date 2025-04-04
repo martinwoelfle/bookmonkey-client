@@ -11,15 +11,19 @@ export class BookFilterPipe implements PipeTransform {
       return books;
     }
 
-    return books.filter(item => item.title.toUpperCase().includes(searchTerm.toUpperCase()));
+    return books.filter((book) => filterBook(book, searchTerm.toLowerCase()));
+
+    // return books.filter(item => item.title.toUpperCase().includes(searchTerm.toUpperCase()));
   }
 }
 
- // function filterBook(books: Book, searchTerm: string): boolean {
- //   Object.entries(books).some(([key, value]) => {
- //     if (typeof searchTerm === 'string') {
- //       return value.ToLowerCase().includes(searchTerm.toLowerCase());
- //     }
- //     return false;
- //   })
- // }
+ function filterBook(book: Book, searchTerm: string): boolean {
+   return Object
+     .entries(book)
+     .some(([_, value]) => {
+     if (typeof value === 'string') {
+       return value.toLowerCase().includes(searchTerm);
+     }
+     return false;
+   })
+ }
