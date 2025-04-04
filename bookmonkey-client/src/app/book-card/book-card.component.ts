@@ -10,7 +10,7 @@ import {Book} from '../book';
 export class BookCardComponent {
   customStyle = { 'color': 'DodgerBlue', 'font-size': '40px' };
   content = input.required<Book>();
-  detailClick = output<Book>()
+  detailClick = output<Book>();
 
   handleDetailClick(event: MouseEvent): void {
     event.preventDefault();

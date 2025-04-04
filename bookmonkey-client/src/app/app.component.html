@@ -6,6 +6,8 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-@for (book of books; track book.isbn) {
+<input (input)="updateBookSearchTerm($event)">
+
+@for (book of books | bookFilter: bookSearchTerm; track book.isbn) {
   <app-book-card [content]="book" (detailClick)="goToBookDetails($event)"></app-book-card>
 }
