@@ -8,7 +8,7 @@ import {Book} from '../../models/book';
   styleUrl: './book-card.component.scss'
 })
 export class BookCardComponent {
-  customStyle = { 'color': 'DodgerBlue', 'font-size': '40px' };
+  customStyle = { 'color': 'Cyan', 'font-size': '40px' };
   content = input.required<Book>();
   detailClick = output<Book>();
 
