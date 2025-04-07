@@ -4,14 +4,14 @@ import {BookCardComponent} from '../book-card/book-card.component';
 import {BookFilterPipe} from '../../pipes/book-filter/book-filter.pipe';
 import {BookApiService} from '../../services/book-api.service';
 //import { Subscription} from 'rxjs';
-import {AsyncPipe} from '@angular/common';
+//import {AsyncPipe} from '@angular/common';
+import {toSignal} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-book',
   imports: [
     BookCardComponent,
-    BookFilterPipe,
-    AsyncPipe
+    BookFilterPipe
   ],
   templateUrl: './book.component.html',
   styleUrl: './book.component.scss',
@@ -21,10 +21,10 @@ export class BookComponent {
 
   private bookApiService = inject(BookApiService);
   //private subscription = Subscription.EMPTY;
-  protected books$ = this.bookApiService.getAll();
+  protected books = toSignal(this.bookApiService.getAll());
 
   bookSearchTerm = "";
-  books: Book[] = [];
+  //books: Book[] = [];
 
   // // lifecycle-hooks
   // ngOnInit(): void {

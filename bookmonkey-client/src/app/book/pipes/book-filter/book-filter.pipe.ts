@@ -6,8 +6,8 @@ import {Book} from '../../models/book';
 })
 export class BookFilterPipe implements PipeTransform {
 
-  transform(books: Book[] | null, searchTerm: string): Book[] {
-    if (books == null ) {
+  transform(books: Book[] | null | undefined, searchTerm: string): Book[] {
+    if (books === null || books === undefined) {
       return [];
     }
 
