@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, effect, inject, Injector, OnInit} from '@angular/core';
 import {Book} from '../../models/book';
 import {BookCardComponent} from '../book-card/book-card.component';
 import {BookFilterPipe} from '../../pipes/book-filter/book-filter.pipe';
@@ -17,19 +17,34 @@ import {toSignal} from '@angular/core/rxjs-interop';
   styleUrl: './book.component.scss',
   providers: [BookApiService]
 })
-export class BookComponent {
+export class BookComponent implements OnInit {
 
   private bookApiService = inject(BookApiService);
+  private readonly injector = inject(Injector);
   //private subscription = Subscription.EMPTY;
-  protected books = toSignal(this.bookApiService.getAll());
+  protected books = toSignal(this.bookApiService.getAll(),{
+    initialValue: []
+  });
+
+  protected bookNumber = 0;
+
+  constructor() {
+    //effect(() => {console.log("Number"+this.books.length)});
+  }
 
   bookSearchTerm = "";
   //books: Book[] = [];
 
   // // lifecycle-hooks
-  // ngOnInit(): void {
-  //   this.subscription = this.bookApiService.getAll().subscribe({next: books => this.books = books});
-  // }
+  ngOnInit(): void {
+    effect(
+      () => {
+        console.log("Number", this.books().length);
+        this.bookNumber = this.books().length;
+      },
+      {injector: this.injector}
+    );
+  }
   //
   // ngOnDestroy() {
   //   this.subscription.unsubscribe();

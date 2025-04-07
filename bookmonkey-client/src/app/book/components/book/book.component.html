@@ -1,5 +1,5 @@
 Suche: <input (input)="updateBookSearchTerm($event)">
-
+<p>Anzahl: {{bookNumber}}</p>
 @for (book of books() | bookFilter: bookSearchTerm; track book.isbn) {
   <app-book-card [content]="book" (detailClick)="goToBookDetails($event)"/>
 }
