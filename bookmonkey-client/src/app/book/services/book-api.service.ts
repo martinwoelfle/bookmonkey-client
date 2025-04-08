@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {Book} from '../models/book';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable()
@@ -8,8 +8,6 @@ import {HttpClient} from '@angular/common/http';
 export class BookApiService {
 
   private readonly httpClient = inject(HttpClient);
-
-  constructor() { }
 
   // getAllOld(): Observable<Book[]>{
   //   return of([{isbn: 123, title: 'How to win friends', author: 'Dale Carnegie', abstract: 'In this book ...'},
@@ -19,5 +17,9 @@ export class BookApiService {
 
   getAll(): Observable<Book[]>{
     return this.httpClient.get<Book[]>('http://localhost:4730/books');
+  }
+
+  getByIsbn(isbn: string): Observable<Book> {
+    return this.httpClient.get<Book>(`http://localhost:4730/books/${isbn}`);
   }
 }

@@ -6,6 +6,7 @@ import {BookApiService} from '../../services/book-api.service';
 //import { Subscription} from 'rxjs';
 //import {AsyncPipe} from '@angular/common';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-book',
@@ -20,8 +21,10 @@ import {toSignal} from '@angular/core/rxjs-interop';
 export class BookComponent implements OnInit {
 
   private bookApiService = inject(BookApiService);
+  private router = inject(Router);
   private readonly injector = inject(Injector);
   //private subscription = Subscription.EMPTY;
+
   protected books = toSignal(this.bookApiService.getAll(),{
     initialValue: []
   });
@@ -54,6 +57,7 @@ export class BookComponent implements OnInit {
   goToBookDetails(book: Book) {
     console.log('Book-Details');
     console.table(book);
+    this.router.navigate(['/books', 'detail', book.isbn]);
   }
 
   updateBookSearchTerm(input: Event) {
