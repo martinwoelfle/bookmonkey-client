@@ -1,10 +1,18 @@
-@if(book){
-  <p>{{book?.isbn}}</p>
-  <h1>{{book?.title}}</h1>
-  <h4>{{book?.author}}</h4>
-  <p>{{book?.abstract}}</p>
-} @else {
-  <h2>no book found!</h2>
-}
+<!--@if(book){-->
+<!--  <p>{{book?.isbn}}</p>-->
+<!--  <h1>{{book?.title}}</h1>-->
+<!--  <h4>{{book?.author}}</h4>-->
+<!--  <p>{{book?.abstract}}</p>-->
+<!--} @else {-->
+<!--  <h2>no book found!</h2>-->
+<!--}-->
+
+@if(bookSignal(); as book) {
+  <h3>{{ book.title }}</h3>
+  <h4>{{ book.author }}</h4>
+  <p>
+    {{ book.abstract }}
+  </p>
+} @else { @if(loading) { Loading ... } @else { no book found } }
 
 <a href="/books">back</a>
