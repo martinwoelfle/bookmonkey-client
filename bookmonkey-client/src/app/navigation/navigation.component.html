@@ -1,5 +1,6 @@
-<p>Navigation</p>
-<ul>
-  <li><a routerLink="/books">Books</a></li>
-  <li><a routerLink="/about">About</a></li>
-</ul>
+<div style="border: 2px solid">
+  <ul>
+    <li><a [routerLink]="'/books'" [routerLinkActive]="'active'">Books</a></li>
+    <li><a [routerLink]="'/about'" [routerLinkActive]="'active'">About</a></li>
+  </ul>
+</div>
