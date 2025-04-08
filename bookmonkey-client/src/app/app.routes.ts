@@ -1,7 +1,5 @@
 import {AboutComponent} from './about/about.component';
 import {Route} from '@angular/router';
-import {BookComponent} from './book/components/book/book.component';
-import {BookDetailComponent} from './book/book-detail/book-detail.component';
 
 export const routes: Route[] = [{
     path: '',
@@ -14,9 +12,5 @@ export const routes: Route[] = [{
   },
   {
     path: 'books',
-    component: BookComponent
-  },
-  {
-    path: 'books/detail/:isbn',
-    component: BookDetailComponent
+    loadChildren: () => import('./book/book.routes').then(module => module.bookRoutes)
   }]
